@@ -16,7 +16,7 @@ class Element(ABC):
 
     @property
     def nodes(self):
-        return self.start_node, self.end_node
+        return {self.start_node, self.end_node}
 
     @property
     def dofs(self):

@@ -2,14 +2,13 @@ from abc import abstractmethod, ABC
 
 
 class Section(ABC):
-
-    @abstractmethod
     @property
+    @abstractmethod
     def area(self):
         raise NotImplementedError
 
-    @abstractmethod
     @property
+    @abstractmethod
     def inertia(self):
         raise NotImplementedError
 

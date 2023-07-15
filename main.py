@@ -1,16 +1,22 @@
-# This is a sample Python script.
+from matplotlib import pyplot as plt
+import stableX as stx
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+node_1 = stx.Node(0, 0)
+node_2 = stx.Node(0, 1)
+node_3 = stx.Node(1, 1)
+node_4 = stx.Node(1, 0)
+
+section = stx.Rectangle(.001, .002)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+e1 = stx.FrameElement(node_1, node_2, section)
+e2 = stx.FrameElement(node_2, node_3, section)
+e3 = stx.FrameElement(node_3, node_4, section)
+
+structure = stx.Structure([e1, e2, e3])
+
+stx.graph_structure(structure)
+plt.show()
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

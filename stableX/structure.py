@@ -3,15 +3,36 @@ from stableX.Elements.frame_element import FrameElement
 
 class Structure:
     def __init__(self, elements: list[FrameElement]):
-        self.elements = elements
-        self.free_dofs = set()
-        self.restrained_dofs = set()
-        self._get_free_and_restrained_dofs()
+        self._elements = elements
 
-    def _get_free_and_restrained_dofs(self):
+    @property
+    def elements(self):
+        return self._elements
+
+    @elements.setter
+    def elements(self, value: list[FrameElement]):
+        self._elements = value
+
+    @property
+    def nodes(self):
+        nodes = set()
+        for element in self.elements:
+            nodes = nodes.union(element.nodes)
+        return nodes
+
+    @property
+    def degrees_of_freedom(self):
+        dofs = set()
         for element in self.elements:
             for dof in element.dofs:
-                if dof.restrained:
-                    self.restrained_dofs.add(dof)
-                else:
-                    self.free_dofs.add(dof)
+                dofs.add(dof)
+
+        return sorted(dofs, key=lambda dof: dof.id)
+
+    @property
+    def free_degrees_of_freedom(self):
+        return {dof for dof in self.degrees_of_freedom if not dof.restrained}
+
+    @property
+    def restrained_degrees_of_freedom(self):
+        return {dof for dof in self.degrees_of_freedom if dof.restrained}
