@@ -1,4 +1,4 @@
-from stableX.Elements.frame_element import FrameElement
+from stableX.Elements.UniDimensionalElements.frame_element import FrameElement
 
 
 class Structure:
@@ -24,15 +24,15 @@ class Structure:
     def degrees_of_freedom(self):
         dofs = set()
         for element in self.elements:
-            for dof in element.dofs:
+            for dof in element.stiffness_matrix_dofs:
                 dofs.add(dof)
 
-        return sorted(dofs, key=lambda dof: dof.id)
+        return sorted(dofs, key=lambda dof: (dof.restrained, dof.id))
 
     @property
     def free_degrees_of_freedom(self):
-        return {dof for dof in self.degrees_of_freedom if not dof.restrained}
+        return sorted({dof for dof in self.degrees_of_freedom if not dof.restrained}, key=lambda dof: dof.id)
 
     @property
     def restrained_degrees_of_freedom(self):
-        return {dof for dof in self.degrees_of_freedom if dof.restrained}
+        return sorted({dof for dof in self.degrees_of_freedom if dof.restrained}, key=lambda dof: dof.id)

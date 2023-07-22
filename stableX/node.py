@@ -10,7 +10,7 @@ class Node:
         self._y = y
         self._x_dof = Dof()
         self._y_dof = Dof()
-        self._z_dof = Dof()
+        self._rz_dof = Dof()
         Node.id_counter += 1
 
     @property
@@ -46,9 +46,18 @@ class Node:
         self._y_dof = value
 
     @property
-    def z_dof(self):
-        return self._z_dof
+    def rz_dof(self):
+        return self._rz_dof
 
-    @z_dof.setter
-    def z_dof(self, value):
-        self._z_dof = value
+    @rz_dof.setter
+    def rz_dof(self, value):
+        self._rz_dof = value
+
+    @property
+    def coordinates(self):
+        return self.x, self.y
+
+    @coordinates.setter
+    def coordinates(self, value: tuple):
+        self.x = value[0]
+        self.y = value[1]

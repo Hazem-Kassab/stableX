@@ -4,7 +4,9 @@ class Dof:
     def __init__(self):
         self.id = Dof.id_counter
         self._restrained = False
+        self._displacement = 0
         Dof.id_counter += 1
+        self._force = 0
 
     @property
     def restrained(self):
@@ -12,4 +14,20 @@ class Dof:
 
     @restrained.setter
     def restrained(self, value: bool):
-        self.restrained = value
+        self._restrained = value
+
+    @property
+    def force(self):
+        return self._force
+
+    @force.setter
+    def force(self, value):
+        self._force = value
+
+    @property
+    def displacement(self):
+        return self._displacement
+
+    @displacement.setter
+    def displacement(self, value):
+        self._displacement = value

@@ -1,30 +1,24 @@
-from abc import ABC
-from stableX.node import Node
-from stableX.section import Section
+from abc import abstractmethod, ABC
+from stableX import Node
 
 
 class Element(ABC):
-    id_counter = 1
 
-    def __init__(self, start_node: Node, end_node: Node, section: Section, elasticity_modulus=1):
-        self.id = Element.id_counter
-        Element.id_counter += 1
+    def __init__(self, start_node: Node, end_node: Node):
         self._start_node = start_node
         self._end_node = end_node
-        self._section = section
-        self.elasticity_modulus = elasticity_modulus
 
     @property
     def nodes(self):
         return {self.start_node, self.end_node}
 
     @property
-    def dofs(self):
-        return [self.start_node.x_dof, self.start_node.y_dof, self.start_node.z_dof,
-                self.end_node.x_dof, self.end_node.y_dof, self.end_node.z_dof]
+    @abstractmethod
+    def stiffness_matrix_dofs(self):
+        raise NotImplementedError
 
     @property
-    def start_node(self):
+    def start_node(self) -> Node:
         return self._start_node
 
     @start_node.setter
@@ -32,22 +26,24 @@ class Element(ABC):
         self._end_node = value
 
     @property
-    def end_node(self):
+    def end_node(self) -> Node:
         return self._end_node
 
     @end_node.setter
     def end_node(self, value: Node):
         self._end_node = value
 
-    @property
-    def length(self):
-        return ((self.end_node.x - self.start_node.x) ** 2 +
-                (self.end_node.y - self.start_node.y) ** 2) ** 0.5
+    @abstractmethod
+    def stiffness_matrix(self):
+        raise NotImplementedError
 
-    @property
-    def section(self):
-        return self._section
+    def b_matrix(self, *args):
+        raise NotImplementedError
 
-    @section.setter
-    def section(self, value: Section):
-        self._section = value
+    @abstractmethod
+    def transformation_matrix(self):
+        raise NotImplementedError
+
+    def global_stiffness_matrix(self):
+        return self.transformation_matrix().T.dot(self.stiffness_matrix()).dot(self.transformation_matrix())
+

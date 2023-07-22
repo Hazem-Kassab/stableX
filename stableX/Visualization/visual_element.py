@@ -1,0 +1,14 @@
+from abc import ABC, abstractmethod
+
+
+class VisualElement(ABC):
+
+    def __init__(self, element):
+        self.element = element
+
+    @abstractmethod
+    def plot_element(self):
+        raise NotImplementedError
+    @abstractmethod
+    def plot_global_displacement(self):
+        raise NotImplementedError
