@@ -1,12 +1,16 @@
+from os.path import abspath
+
 from stableX.Visualization.visual_element import VisualElement
 import matplotlib.pyplot as plt
 from PIL import Image
 from matplotlib.offsetbox import TextArea, DrawingArea, OffsetImage, AnnotationBbox
 from stableX.Visualization import fig, ax
+import pathlib
 
 
 class VisualRotationalSpringElement(VisualElement):
-    image = Image.open(r"image.png", "r")
+
+    image = Image.open(str(pathlib.Path().absolute()) + r"\stableX\Visualization\image.png", "r")
 
     def plot_element(self):
         imagebox = OffsetImage(VisualRotationalSpringElement.image, zoom=0.1,)

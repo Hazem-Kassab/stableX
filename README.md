@@ -1,3 +1,9 @@
+# stableX
+ A Python library for stability analysis of frames
+
+## Usage
+
+```python
 # frame_with_springs
 
 from matplotlib import pyplot as plt
@@ -43,3 +49,10 @@ print(node_2.x_dof.displacement)
 
 stx.plot_structure(structure)
 plt.show()
+```
+## Output
+ 
+![alt_text](https://github.com/Hazem-Kassab/stableX/blob/master/Frame_with_springs.PNG?raw=true)
+
+## Cantilever Column with spring Example
+![alt_text](https://github.com/Hazem-Kassab/stableX/blob/master/Cantilever.PNG?raw=true)
