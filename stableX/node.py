@@ -1,4 +1,4 @@
-from stableX.degree_of_freedom import Dof
+from stableX.degree_of_freedom import DegreeOfFreedom
 
 
 class Node:
@@ -8,9 +8,9 @@ class Node:
         self.id = Node.id_counter
         self._x = x
         self._y = y
-        self._x_dof = Dof()
-        self._y_dof = Dof()
-        self._rz_dof = Dof()
+        self._x_dof = DegreeOfFreedom()
+        self._y_dof = DegreeOfFreedom()
+        self._rz_dof = DegreeOfFreedom()
         Node.id_counter += 1
 
     @property

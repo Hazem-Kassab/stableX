@@ -1,11 +1,11 @@
-class Dof:
+class DegreeOfFreedom:
     id_counter = 1
 
     def __init__(self):
-        self.id = Dof.id_counter
+        self.id = DegreeOfFreedom.id_counter
         self._restrained = False
         self._displacement = 0
-        Dof.id_counter += 1
+        DegreeOfFreedom.id_counter += 1
         self._force = 0
 
     @property

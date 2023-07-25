@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 import numpy as np
-from stableX.Elements.element import Element
+from stableX.elements.element import Element
 from stableX.node import Node
 from stableX.section import Section
 

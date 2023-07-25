@@ -8,7 +8,8 @@ class VisualElement(ABC):
 
     @abstractmethod
     def plot_element(self):
-        raise NotImplementedError
+        raise
+
     @abstractmethod
     def plot_global_displacement(self):
         raise NotImplementedError

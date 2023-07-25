@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from stableX.Elements.UniDimensionalElements.unidimensional_element import UniDimensionalElement
+from stableX.elements.unidimensional_elements.unidimensional_element import UniDimensionalElement
 from stableX.stability_functions import *
 
 

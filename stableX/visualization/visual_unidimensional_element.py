@@ -1,7 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
-from stableX.Elements.UniDimensionalElements.unidimensional_element import UniDimensionalElement
-from stableX.Visualization.visual_element import VisualElement
+from stableX.visualization.visual_element import VisualElement
 
 
 class VisualUniDimensionalElement(VisualElement):

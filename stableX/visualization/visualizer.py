@@ -1,12 +1,7 @@
 import matplotlib.pyplot as plt
-from mpl_toolkits.axisartist import Subplot
 
 from stableX import Structure
-from stableX.Visualization.visual_element_factory import create_visual_element
-
-# fig = plt.figure(facecolor='black')
-# ax = Subplot(fig, 111, facecolor='black')
-# fig.add_subplot(ax)
+from stableX.visualization import visual_element_factory
 
 
 def plot_structure(structure: Structure):
@@ -23,8 +18,6 @@ def plot_structure(structure: Structure):
               y_min - 1.1 * y_range/2,
               y_max + 1.1 * y_range/2])
     for element in structure.elements:
-        # if type(element) is not LinearRotationalSpringElement:
-        vse = create_visual_element(element)
-        # print(vse)
+        vse = visual_element_factory.create_visual_element(element)
         vse.plot_element()
         vse.plot_global_displacement()

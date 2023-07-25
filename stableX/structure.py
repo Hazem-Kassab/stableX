@@ -1,4 +1,4 @@
-from stableX.Elements.UniDimensionalElements.frame_element import FrameElement
+from stableX.elements.unidimensional_elements.frame_element import FrameElement
 
 
 class Structure:

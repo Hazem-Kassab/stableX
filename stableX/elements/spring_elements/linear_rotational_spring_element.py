@@ -1,7 +1,7 @@
 import numpy as np
 
 from stableX import Node
-from stableX.Elements.element import Element
+from stableX.elements.element import Element
 
 
 class LinearRotationalSpringElement(Element):
