@@ -17,5 +17,5 @@ class VisualRotationalSpringElement(VisualElement):
         ax.add_artist(ab)
         plt.draw()
 
-    def plot_global_displacement(self):
+    def plot_global_displacement(self, scale):
         pass

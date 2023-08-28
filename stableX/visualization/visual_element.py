@@ -11,5 +11,5 @@ class VisualElement(ABC):
         raise
 
     @abstractmethod
-    def plot_global_displacement(self):
+    def plot_global_displacement(self, scale):
         raise NotImplementedError

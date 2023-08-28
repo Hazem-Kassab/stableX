@@ -4,7 +4,7 @@ from stableX import Structure
 from stableX.visualization import visual_element_factory
 
 
-def plot_structure(structure: Structure):
+def plot_structure(structure: Structure, scale):
     x_coordinates = [node.x for node in structure.nodes]
     y_coordinates = [node.y for node in structure.nodes]
     x_min = min(x_coordinates)
@@ -20,4 +20,4 @@ def plot_structure(structure: Structure):
     for element in structure.elements:
         vse = visual_element_factory.create_visual_element(element)
         vse.plot_element()
-        vse.plot_global_displacement()
+        vse.plot_global_displacement(scale)

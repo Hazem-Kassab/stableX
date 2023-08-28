@@ -6,11 +6,11 @@ class Node:
 
     def __init__(self, x, y):
         self.id = Node.id_counter
-        self._x = x
-        self._y = y
-        self._x_dof = DegreeOfFreedom()
-        self._y_dof = DegreeOfFreedom()
-        self._rz_dof = DegreeOfFreedom()
+        self.x = x
+        self.y = y
+        self.x_dof = DegreeOfFreedom()
+        self.y_dof = DegreeOfFreedom()
+        self.rz_dof = DegreeOfFreedom()
         Node.id_counter += 1
 
     @property

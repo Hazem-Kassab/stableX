@@ -3,10 +3,10 @@ class DegreeOfFreedom:
 
     def __init__(self):
         self.id = DegreeOfFreedom.id_counter
-        self._restrained = False
-        self._displacement = 0
+        self.restrained = False
+        self.displacement = 0
         DegreeOfFreedom.id_counter += 1
-        self._force = 0
+        self.force = 0
 
     @property
     def restrained(self):

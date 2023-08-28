@@ -3,7 +3,7 @@ from stableX.elements.unidimensional_elements.frame_element import FrameElement
 
 class Structure:
     def __init__(self, elements: list[FrameElement]):
-        self._elements = elements
+        self.elements = elements
 
     @property
     def elements(self):

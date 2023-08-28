@@ -30,8 +30,9 @@ class VisualUniDimensionalElement(VisualElement):
                                 for x in range(self.no_of_segments+1)])
         return np.stack(local_array, axis=1)
 
-    def plot_global_displacement(self):
-        global_array = self.transformation_matrix().dot(self._get_local_displacement()) + self._get_global_coordinates()
+    def plot_global_displacement(self, scale):
+        global_array = self.transformation_matrix().dot(scale * self._get_local_displacement()) + \
+                       self._get_global_coordinates()
         plt.plot(global_array[0], global_array[1], 'white', linestyle='--')
 
 

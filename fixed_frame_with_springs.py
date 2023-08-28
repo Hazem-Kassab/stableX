@@ -24,16 +24,18 @@ e1 = stx.FrameElement(node_1, node_2, section)
 e2 = stx.FrameElement(node_22, node_33, section)
 e3 = stx.FrameElement(node_3, node_4, section)
 
-s1 = stx.LinearRotationalSpringElement(node_2, node_22, 1e20)
+s1 = stx.LinearRotationalSpringElement(node_2, node_22, 0e20)
 s2 = stx.LinearRotationalSpringElement(node_3, node_33, 1e20)
 
 node_1.x_dof.restrained = True
 node_1.y_dof.restrained = True
+node_1.rz_dof.restrained = True
 
 node_4.x_dof.restrained = True
 node_4.y_dof.restrained = True
+node_4.rz_dof.restrained = True
 
-node_2.x_dof.force = 5000000
+node_2.x_dof.force = 100000
 
 structure = stx.Structure([e1, e2, e3, s1, s2])
 solver = stx.Solver(structure)
@@ -41,5 +43,5 @@ solver.solve_first_order_elastic()
 
 print(node_2.x_dof.displacement)
 
-stx.plot_structure(structure, 1)
+stx.plot_structure(structure, 100)
 plt.show()
