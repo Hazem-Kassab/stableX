@@ -2,7 +2,7 @@ from stableX.elements.unidimensional_elements.unidimensional_element import UniD
 
 
 class UniDimensionalElementSubClass(UniDimensionalElement):
-    def stiffness_matrix(self):
+    def first_order_elastic_stiffness_matrix(self):
         pass
 
     def transformation_matrix(self):

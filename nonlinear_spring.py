@@ -1,28 +1,30 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-P = 100
-step = 10
-P_array_1 = np.array(range(0, P, 1))
-P_array = np.array(range(0, P+step, step))
-
-u = (P_array_1 + 1) ** 2 - 1
-
+# set force and number of increments
+P = 1000
+n = 1000
 i = 0
-po = 0
-u_approx = 0
-u_approx_array = np.array([])
+di = 0
 
+# calculate load step
+dP = P/n
 
-for p in P_array:
-    dp = p - po
-    k = 1 / (2*(po+1))
-    u_approx += dp/k
-    print(k * u_approx)
-    u_approx_array = np.append(u_approx_array, u_approx)
+# empty arrays to hold displacement and load values:
+P_array = []
+d_array = []
+
+while i <= n:
+    Pi = i * dP
+    ki = 1/(3 * (Pi+2)**2)
+    di = di + dP/ki
+    P_array.append(Pi)
+    d_array.append(di)
     i += 1
-    po = P_array[i - 1]
 
-plt.plot(u, P_array_1, "k")
-plt.plot(u_approx_array, P_array, "b")
+exact_load = np.arange(0, P, P/1000)
+
+plt.plot(d_array, P_array, "b", label="Numerical (n = %d)" % n)
+plt.plot((exact_load+2)**3 - 8, exact_load, "k", label="Exact, Eq.(5)", linestyle="--")
+plt.legend()
 plt.show()

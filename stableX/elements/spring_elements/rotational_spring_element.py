@@ -10,10 +10,14 @@ class LinearRotationalSpringElement(Element):
         super().__init__(start_node, end_node)
         self._rotational_stiffness = rotational_stiffness
 
-    def stiffness_matrix(self):
+    def first_order_elastic_stiffness_matrix(self):
         k = self.rotational_stiffness
         return k * np.array([[1, -1],
                              [-1, 1]])
+
+    def geometric_stiffness_matrix(self):
+        return np.array([[0, 0],
+                         [0, 0]])
 
     def transformation_matrix(self):
         return np.array([[1, 0],

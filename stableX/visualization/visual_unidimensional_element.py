@@ -1,5 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
+
+from stableX.visualization import ax
 from stableX.visualization.visual_element import VisualElement
 
 
@@ -15,7 +17,7 @@ class VisualUniDimensionalElement(VisualElement):
     def plot_element(self):
         x_array = np.array([self.element.start_node.x, self.element.end_node.x])
         y_array = np.array([self.element.start_node.y, self.element.end_node.y])
-        plt.plot(x_array, y_array, 'yellow', linestyle="solid", marker='o')
+        ax.plot(x_array, y_array, 'yellow', linestyle="solid", marker='o')
 
     def _get_local_coordinates(self):
         return np.stack(np.array([[x/self.no_of_segments * self.element.length, 0]
@@ -33,6 +35,6 @@ class VisualUniDimensionalElement(VisualElement):
     def plot_global_displacement(self, scale):
         global_array = self.transformation_matrix().dot(scale * self._get_local_displacement()) + \
                        self._get_global_coordinates()
-        plt.plot(global_array[0], global_array[1], 'white', linestyle='--')
+        ax.plot(global_array[0], global_array[1], 'white', linestyle='--')
 
 

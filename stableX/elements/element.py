@@ -1,12 +1,20 @@
 from abc import abstractmethod, ABC
+
+import numpy as np
+
 from stableX import Node
 
 
 class Element(ABC):
+    id_counter = 1
 
-    def __init__(self, start_node: Node, end_node: Node):
+    def __init__(self, start_node: Node, end_node: Node, include_geom_nonlinearity=False):
         self._start_node = start_node
         self._end_node = end_node
+        self.geometric_nonlinearity = include_geom_nonlinearity
+        self.cumulative_end_forces = np.zeros(len(self.stiffness_matrix_dofs))
+        self.id = Element.id_counter
+        Element.id_counter += 1
 
     @property
     def nodes(self):
@@ -14,7 +22,7 @@ class Element(ABC):
 
     @property
     @abstractmethod
-    def stiffness_matrix_dofs(self):
+    def stiffness_matrix_dofs(self) -> list:
         raise NotImplementedError
 
     @property
@@ -34,8 +42,18 @@ class Element(ABC):
         self._end_node = value
 
     @abstractmethod
-    def stiffness_matrix(self):
+    def first_order_elastic_stiffness_matrix(self):
         raise NotImplementedError
+
+    @abstractmethod
+    def geometric_stiffness_matrix(self):
+        raise NotImplementedError
+
+    def stiffness_matrix(self):
+        if not self.geometric_nonlinearity:
+            return self.first_order_elastic_stiffness_matrix()
+        else:
+            return self.first_order_elastic_stiffness_matrix() + self.geometric_stiffness_matrix()
 
     def b_matrix(self, *args):
         raise NotImplementedError
@@ -47,3 +65,19 @@ class Element(ABC):
     def global_stiffness_matrix(self):
         return self.transformation_matrix().T.dot(self.stiffness_matrix()).dot(self.transformation_matrix())
 
+    @property
+    def cumulative_end_forces(self):
+        return self._cumulative_end_forces
+
+    @cumulative_end_forces.setter
+    def cumulative_end_forces(self, value: np.ndarray):
+        self._cumulative_end_forces = value
+
+    def global_end_displacements(self):
+        return np.array([dof.displacement for dof in self.stiffness_matrix_dofs])
+
+    def local_end_displacements(self):
+        return self.transformation_matrix().dot(self.global_end_displacements())
+
+    def end_forces(self):
+        return self.stiffness_matrix().dot(self.local_end_displacements())

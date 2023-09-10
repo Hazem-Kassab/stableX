@@ -1,10 +1,12 @@
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
+from mpl_toolkits.axisartist import Subplot
 
 from stableX import Structure
-from stableX.visualization import visual_element_factory
+from stableX.visualization import visual_element_factory, plt
 
 
 def plot_structure(structure: Structure, scale):
+    # plt.close()
     x_coordinates = [node.x for node in structure.nodes]
     y_coordinates = [node.y for node in structure.nodes]
     x_min = min(x_coordinates)
@@ -21,3 +23,16 @@ def plot_structure(structure: Structure, scale):
         vse = visual_element_factory.create_visual_element(element)
         vse.plot_element()
         vse.plot_global_displacement(scale)
+
+    plt.show()
+
+
+def plot(array_1, array_2):
+    plt.close()
+    # plt.rcdefaults()
+    fig = plt.figure()
+    axs = fig.add_subplot()
+    axs.plot(array_1, array_2)
+    # fig.tight_layout()
+    plt.show()
+

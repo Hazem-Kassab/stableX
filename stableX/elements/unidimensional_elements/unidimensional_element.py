@@ -6,12 +6,9 @@ from stableX.section import Section
 
 
 class UniDimensionalElement(Element, ABC):
-    id_counter = 1
 
-    def __init__(self, start_node: Node, end_node: Node, section: Section, elasticity_modulus=200000):
-        super().__init__(start_node, end_node)
-        self.id = UniDimensionalElement.id_counter
-        UniDimensionalElement.id_counter += 1
+    def __init__(self, start_node: Node, end_node: Node, section: Section, include_geom_nonlinearrity=False, elasticity_modulus=200000):
+        super().__init__(start_node, end_node, include_geom_nonlinearrity)
         self._start_node = start_node
         self._end_node = end_node
         self._section = section
@@ -29,10 +26,6 @@ class UniDimensionalElement(Element, ABC):
     @section.setter
     def section(self, value: Section):
         self._section = value
-
-    @abstractmethod
-    def stiffness_matrix(self):
-        raise NotImplementedError
 
     @abstractmethod
     def transformation_matrix(self):
@@ -54,19 +47,9 @@ class UniDimensionalElement(Element, ABC):
     def normal_b_matrix(self, xi):
         raise NotImplementedError
 
-    @property
-    def stiffness_matrix_dofs(self):
-        return [self.start_node.x_dof, self.start_node.y_dof, self.start_node.rz_dof,
-                self.end_node.x_dof, self.end_node.y_dof, self.end_node.rz_dof]
-
-    def global_end_displacements(self):
-        return np.array([dof.displacement for dof in self.stiffness_matrix_dofs])
-
-    def local_end_displacements(self):
-        return self.transformation_matrix().dot(self.global_end_displacements())
-
-    def end_forces(self):
-        return self.stiffness_matrix().dot(self.local_end_displacements())
+    @abstractmethod
+    def stiffness_matrix_dofs(self) -> list:
+        pass
 
     def get_local_displacement(self, x):
         return self.shape_function(x).dot(self.local_end_displacements())

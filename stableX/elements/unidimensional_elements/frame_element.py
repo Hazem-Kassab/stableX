@@ -5,7 +5,11 @@ from stableX.stability_functions import *
 
 
 class FrameElement(UniDimensionalElement):
-    id_counter = 1
+
+    @property
+    def stiffness_matrix_dofs(self) -> list:
+        return [self.start_node.x_dof, self.start_node.y_dof, self.start_node.rz_dof,
+                self.end_node.x_dof, self.end_node.y_dof, self.end_node.rz_dof]
 
     @property
     def euler_load(self):
@@ -25,7 +29,7 @@ class FrameElement(UniDimensionalElement):
                              [0,           -ss(ul)/l**2,     sb(ul)/l,           0,   ss(ul)/l**2,      sb(ul)/l],
                              [0,              -sb(ul)/l,  s(ul)*c(ul),           0,      sb(ul)/l,        s(ul)]])
 
-    def stiffness_matrix(self):
+    def first_order_elastic_stiffness_matrix(self):
         e = self.elasticity_modulus
         i = self.section.inertia
         l = self.length
@@ -38,14 +42,16 @@ class FrameElement(UniDimensionalElement):
                          [0, -12*e*i/l**3, -6*e*i/l**2,      0,  12*e*i/l**3, -6*e*i/l**2],
                          [0,   6*e*i/l**2,     2*e*i/l,      0,  -6*e*i/l**2,     4*e*i/l]])
 
-    def geometric_stiffness_matrix(self, load):
+    def geometric_stiffness_matrix(self):
         l = self.length
-        return load/l * np.array([[1,    0,         0, -1,     0,         0],
-                                  [0,  6/5,      l/10,  0,  -6/5,      l/10],
-                                  [0, l/10, 2*l**2/15,  0, -l/10,  -l**2/30],
-                                  [-1,   0,         0,  1,     0,         0],
-                                  [0, -6/5,     -l/10,  0,   6/5,     -l/10],
-                                  [0, l/10,  -l**2/30,  0, -l/10, 2*l**2/15]])
+        p = self.cumulative_end_forces[3]
+        # print(self.euler_load)
+        return p/l * np.array([[1,    0,         0, -1,     0,         0],
+                               [0,  6/5,      l/10,  0,  -6/5,      l/10],
+                               [0, l/10, 2*l**2/15,  0, -l/10,  -l**2/30],
+                               [-1,   0,         0,  1,     0,         0],
+                               [0, -6/5,     -l/10,  0,   6/5,     -l/10],
+                               [0, l/10,  -l**2/30,  0, -l/10, 2*l**2/15]])
 
     def shape_function(self, x):
         l = self.length
@@ -83,3 +89,4 @@ class FrameElement(UniDimensionalElement):
         transformation_matrix[:3, :3] = t
         transformation_matrix[3:, 3:] = t
         return transformation_matrix
+
