@@ -1,4 +1,5 @@
 # import matplotlib.pyplot as plt
+import numpy as np
 from mpl_toolkits.axisartist import Subplot
 
 from stableX import Structure
@@ -34,5 +35,6 @@ def plot(array_1, array_2, array_1_label, array_2_label):
     axs.plot(array_1, array_2)
     plt.xlabel(array_1_label)
     plt.ylabel(array_2_label)
+    plt.grid()
     plt.show()
 
