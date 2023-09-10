@@ -1,5 +1,6 @@
+# truss_cantilever.py
+
 import stableX as stx
-from matplotlib import pyplot as plt
 
 
 n1 = stx.Node(0, 0)
@@ -18,11 +19,11 @@ n8 = stx.Node(6000, 1400)
 
 section = stx.Rectangle(100, 100)
 
-e1 = stx.FrameElement(n1, n1a, section, include_geom_nonlinearrity=True)
+e1 = stx.FrameElement(n1, n1a, section, include_geom_nonlinearity=True)
 e1a = stx.FrameElement(n1a, n2, section, True)
-e2 = stx.FrameElement(n2, n2a, section, include_geom_nonlinearrity=True)
+e2 = stx.FrameElement(n2, n2a, section, include_geom_nonlinearity=True)
 e2a = stx.FrameElement(n2a, n3, section, True)
-e3 = stx.FrameElement(n3, n3a, section, include_geom_nonlinearrity=True)
+e3 = stx.FrameElement(n3, n3a, section, include_geom_nonlinearity=True)
 e3a = stx.FrameElement(n3a, n4, section, True)
 
 e4 = stx.FrameElement(n5, n6, section)
@@ -33,9 +34,9 @@ e7 = stx.TrussElement(n5, n2, section)
 e8 = stx.TrussElement(n6, n3, section)
 e9 = stx.TrussElement(n7, n4, section)
 
-e10 = stx.TrussElement(n6, n2, section, include_geom_nonlinearrity=True)
-e11 = stx.TrussElement(n7, n3, section, include_geom_nonlinearrity=True)
-e12 = stx.TrussElement(n8, n4, section, include_geom_nonlinearrity=True)
+e10 = stx.TrussElement(n6, n2, section, include_geom_nonlinearity=True)
+e11 = stx.TrussElement(n7, n3, section, include_geom_nonlinearity=True)
+e12 = stx.TrussElement(n8, n4, section, include_geom_nonlinearity=True)
 
 
 structure = stx.Structure([e1, e1a, e2, e2a, e3, e3a, e4, e5, e6, e7, e8, e9, e10, e11, e12])
@@ -47,17 +48,12 @@ n5.x_dof.restrained = True
 n5.y_dof.restrained = True
 
 n8.y_dof.force = -1.69e6
-# n4.x_dof.force = -1.5e7
-# solver = stx.Solver(structure)
-# solver.solve_first_order_elastic()
 
 solver = stx.NonlinearSolver(structure)
 solver.solve_incrementally(100, n8.y_dof, n8.y_dof)
 
-print(n8.y_dof.displacement)
-
 stx.plot_structure(structure, 5)
 
-stx.plot(solver.displacement, solver.load)
+stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")
 
 

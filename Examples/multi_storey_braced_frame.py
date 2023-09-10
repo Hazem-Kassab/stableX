@@ -1,3 +1,5 @@
+# multi_storey_braced_frame.py
+
 import stableX as stx
 
 w = 6000
@@ -73,9 +75,8 @@ n8.y_dof.force = P
 # solve
 solver = stx.NonlinearSolver(braced_frame)
 solver.solve_incrementally(100, n4.y_dof, n3a.x_dof)
-print(n3a.x_dof.displacement)
 
 # plot results
 stx.plot_structure(braced_frame, 50)
 
-stx.plot(solver.displacement, solver.load)
+stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")

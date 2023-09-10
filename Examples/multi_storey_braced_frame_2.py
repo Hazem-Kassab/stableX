@@ -1,3 +1,5 @@
+# multi_storey_braced_frame_2.py
+
 import stableX as stx
 
 w = 6000
@@ -54,28 +56,22 @@ braced_frame = stx.Structure([c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12,
 # assign boundary conditions
 n1.x_dof.restrained = True
 n1.y_dof.restrained = True
-# n1.rz_dof.restrained = True
 
 n5.x_dof.restrained = True
 n5.y_dof.restrained = True
-# n5.rz_dof.restrained = True
 
-# n4.x_dof.restrained = True
-# n8.x_dof.restrained = True
 
 # assign load
 P = -7.29e5
 n4.y_dof.force = P
 n4.x_dof.force = 1000
-# n7a.x_dof.force = -1000
 n8.y_dof.force = P
 
 # solve
 solver = stx.NonlinearSolver(braced_frame)
 solver.solve_incrementally(300, n4.y_dof, n3a.x_dof)
-print(n3a.x_dof.displacement)
 
 # plot results
 stx.plot_structure(braced_frame, 50)
 
-stx.plot(solver.displacement, solver.load)
+stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")

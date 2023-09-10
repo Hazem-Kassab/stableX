@@ -1,3 +1,5 @@
+# chevron_bracing.py
+
 import stableX as stx
 
 w = 6000
@@ -149,7 +151,7 @@ n4.x_dof.force = 4.88e5
 # solve
 solver = stx.NonlinearSolver(structure)
 solver.solve_incrementally(100, n4.x_dof, n4.x_dof)
-print(n4.x_dof.displacement)
+
 
 stx.plot_structure(structure, 5)
-stx.plot(solver.displacement, solver.load)
+stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")

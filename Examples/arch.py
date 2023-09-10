@@ -1,5 +1,6 @@
-import math
+# arch.py
 
+import math
 import stableX as stx
 
 radius = 6000
@@ -48,4 +49,4 @@ solver.solve_incrementally(100, nodes[middle_node_index].y_dof,
 
 stx.plot_structure(arch, 1)
 
-stx.plot(solver.displacement, solver.load)
+stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")

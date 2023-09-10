@@ -27,12 +27,12 @@ def plot_structure(structure: Structure, scale):
     plt.show()
 
 
-def plot(array_1, array_2):
+def plot(array_1, array_2, array_1_label, array_2_label):
     plt.close()
-    # plt.rcdefaults()
     fig = plt.figure()
     axs = fig.add_subplot()
     axs.plot(array_1, array_2)
-    # fig.tight_layout()
+    plt.xlabel(array_1_label)
+    plt.ylabel(array_2_label)
     plt.show()
 

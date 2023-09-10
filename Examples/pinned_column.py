@@ -1,44 +1,47 @@
-import math
+# pinned_column.py
+
 import stableX as stx
 
-import matplotlib.pyplot as plt
-
-
+# column length
 l = 3000
 
+# create nodes at quarter lengths
 n1 = stx.Node(0, 0)
-n2 = stx.Node(10, 0.25*l)
-n3 = stx.Node(0, 0.5*l)
-n4 = stx.Node(-10, 0.75*l)
+n2 = stx.Node(0, 0.25*l)
+n3 = stx.Node(10, 0.5*l)  # introduce imperfection of 10 mm
+n4 = stx.Node(0, 0.75*l)
 n5 = stx.Node(0, l)
 
+# create section
 section = stx.Rectangle(100, 100)
 
+# create Frame elements and specify node connectivity and geometric non-linearity
 e1 = stx.FrameElement(n1, n2, section, True)
 e2 = stx.FrameElement(n2, n3, section, True)
 e3 = stx.FrameElement(n3, n4, section, True)
 e4 = stx.FrameElement(n4, n5, section, True)
 
+# assign boundary conditions (pinned at base, roller at top)
 n1.x_dof.restrained = True
 n1.y_dof.restrained = True
-# n1.rz_dof.restrained = True
-n3.x_dof.restrained = True
 n5.x_dof.restrained = True
 
-p = -7.3e6
-
+# assign load
+p = -1.813e6
 n5.y_dof.force = p
 
+# create structure assembly of elements
 structure = stx.Structure([e1, e2, e3, e4])
 
-
+# create a nonlinear solver object
 solver = stx.NonlinearSolver(structure)
-solver.solve_incrementally(100, n5.y_dof, n5.y_dof)
 
-print(n5.y_dof.displacement)
-print(4*math.pi**2 * e1.elasticity_modulus*section.inertia/l**2 / 1e6)
+# solve in 100 load steps and record load at top and mid-span lateral displacement
+solver.solve_incrementally(100, n5.y_dof, n3.x_dof)
 
+# plot structure and deformation (buckled shape)
 stx.plot_structure(structure, 1)
 
-stx.plot(solver.displacement, solver.load)
+# plot recorded load-displacement curve
+stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")
 

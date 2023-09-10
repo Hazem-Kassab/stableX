@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+# cantilever.py
 
 import stableX as stx
 
@@ -33,9 +33,5 @@ solver.solve_first_order_elastic()
 solver = stx.NonlinearSolver(structure)
 solver.solve_incrementally(100, n2.y_dof, n2.x_dof)
 
-print(n2.x_dof.displacement)
-print(p*l**3/(3*e1.elasticity_modulus*section.inertia) -
-      n11.rz_dof.displacement * l)
-
 stx.plot_structure(structure, 0.5)
-stx.plot(solver.displacement, solver.load)
+stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")

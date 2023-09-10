@@ -1,6 +1,5 @@
 # frame_with_springs
 
-from matplotlib import pyplot as plt
 import stableX as stx
 
 node_1 = stx.Node(0, 0)
@@ -42,4 +41,3 @@ solver.solve_first_order_elastic()
 print(node_2.x_dof.displacement)
 
 stx.plot_structure(structure, 1)
-plt.show()

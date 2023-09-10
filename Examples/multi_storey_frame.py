@@ -1,3 +1,5 @@
+# multi_storey_frame.py
+
 import stableX as stx
 
 w = 6000
@@ -53,14 +55,11 @@ n5.x_dof.restrained = True
 n5.y_dof.restrained = True
 n5.rz_dof.restrained = True
 
-# n4.x_dof.restrained = True
-# n8.x_dof.restrained = True
 
 # assign load
 P = -2e5
 n4.y_dof.force = P
 n4.x_dof.force = 1000
-# n7a.x_dof.force = -1000
 n8.y_dof.force = P
 
 # solve
@@ -71,4 +70,4 @@ print(n8.x_dof.displacement)
 # plot results
 stx.plot_structure(frame, 1)
 
-stx.plot(solver.displacement, solver.load)
+stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")

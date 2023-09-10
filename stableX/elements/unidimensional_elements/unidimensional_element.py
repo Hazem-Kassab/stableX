@@ -7,8 +7,8 @@ from stableX.section import Section
 
 class UniDimensionalElement(Element, ABC):
 
-    def __init__(self, start_node: Node, end_node: Node, section: Section, include_geom_nonlinearrity=False, elasticity_modulus=200000):
-        super().__init__(start_node, end_node, include_geom_nonlinearrity)
+    def __init__(self, start_node: Node, end_node: Node, section: Section, include_geom_nonlinearity=False, elasticity_modulus=200000):
+        super().__init__(start_node, end_node, include_geom_nonlinearity)
         self._start_node = start_node
         self._end_node = end_node
         self._section = section
