@@ -37,4 +37,3 @@ def plot(array_1, array_2, array_1_label, array_2_label):
     plt.ylabel(array_2_label)
     plt.grid()
     plt.show()
-

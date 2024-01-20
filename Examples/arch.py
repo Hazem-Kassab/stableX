@@ -40,13 +40,21 @@ nodes[-1].rz_dof.restrained = True
 
 # assign force
 middle_node_index = int(number_of_segments/2)
-nodes[middle_node_index].y_dof.force = -5.8e5
+nodes[middle_node_index].y_dof.force = -1
 
 
-solver = stx.NonlinearSolver(arch)
-solver.solve_incrementally(100, nodes[middle_node_index].y_dof,
-                           nodes[middle_node_index].y_dof)
+# solver = stx.NonlinearSolver(arch)
+# solver.solve_incrementally(100, nodes[middle_node_index].y_dof,
+#                            nodes[middle_node_index].y_dof)
+#
+# stx.plot_structure(arch, 1)
+#
+# stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")
 
-stx.plot_structure(arch, 1)
+solver = stx.EigenSolver(arch)
 
-stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")
+eigenvalue, eigenvector = solver.solve(mode_shape=3)
+
+print(eigenvalue)
+
+stx.plot_structure(arch, 1500)

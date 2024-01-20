@@ -1,10 +1,10 @@
 import numpy as np
 
 from stableX import Node
-from stableX.elements.element import Element
+from stableX.elements.spring_elements.spring_element import SpringElement
 
 
-class LinearRotationalSpringElement(Element):
+class LinearRotationalSpringElement(SpringElement):
 
     def __init__(self, start_node: Node, end_node: Node, rotational_stiffness):
         super().__init__(start_node, end_node)
@@ -15,7 +15,7 @@ class LinearRotationalSpringElement(Element):
         return k * np.array([[1, -1],
                              [-1, 1]])
 
-    def geometric_stiffness_matrix(self):
+    def geometric_stiffness_matrix(self, end_forces: np.ndarray):
         return np.array([[0, 0],
                          [0, 0]])
 

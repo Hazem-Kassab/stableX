@@ -41,8 +41,8 @@ class TrussElement(UniDimensionalElement):
                                [-1, 0, 1, 0],
                                [0, 0, 0, 0]])
 
-    def geometric_stiffness_matrix(self):
-        p = self.cumulative_end_forces[2]
+    def geometric_stiffness_matrix(self, end_forces: np.ndarray):
+        p = end_forces[2]
         l = self.length
         return p/l * np.array([[1, 0, -1, 0],
                          [0, 1, 0, -1],

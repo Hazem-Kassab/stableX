@@ -19,11 +19,11 @@ n8 = stx.Node(6000, 1400)
 
 section = stx.Rectangle(100, 100)
 
-e1 = stx.FrameElement(n1, n1a, section, include_geom_nonlinearity=True)
+e1 = stx.FrameElement(n1, n1a, section, True)
 e1a = stx.FrameElement(n1a, n2, section, True)
-e2 = stx.FrameElement(n2, n2a, section, include_geom_nonlinearity=True)
+e2 = stx.FrameElement(n2, n2a, section, True)
 e2a = stx.FrameElement(n2a, n3, section, True)
-e3 = stx.FrameElement(n3, n3a, section, include_geom_nonlinearity=True)
+e3 = stx.FrameElement(n3, n3a, section, True)
 e3a = stx.FrameElement(n3a, n4, section, True)
 
 e4 = stx.FrameElement(n5, n6, section)
@@ -47,13 +47,17 @@ n1.y_dof.restrained = True
 n5.x_dof.restrained = True
 n5.y_dof.restrained = True
 
-n8.y_dof.force = -1.69e6
+n8.y_dof.force = -1
 
-solver = stx.NonlinearSolver(structure)
-solver.solve_incrementally(100, n8.y_dof, n8.y_dof)
+# solver = stx.NonlinearSolver(structure)
+# solver.solve_incrementally(500, n8.y_dof, n8.y_dof)
+#
+# stx.plot_structure(structure, 5)
+#
+# stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")
 
-stx.plot_structure(structure, 5)
+solver = stx.EigenSolver(structure)
 
-stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")
+solver.solve(mode_shape=1)
 
-
+stx.plot_structure(structure, 1000)

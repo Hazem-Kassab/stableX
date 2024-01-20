@@ -43,7 +43,7 @@ b1 = stx.FrameElement(n2, n6, section)
 b2 = stx.FrameElement(n3, n7, section)
 b3 = stx.FrameElement(n4, n8, section)
 
-frame = stx.Structure([c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c6, b1, b2, b3])
+frame = stx.Structure([c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, b1, b2, b3])
 
 
 # assign boundary conditions
@@ -57,17 +57,23 @@ n5.rz_dof.restrained = True
 
 
 # assign load
-P = -2e5
+P = -1
 n4.y_dof.force = P
-n4.x_dof.force = 1000
+# n4.x_dof.force = 1000
 n8.y_dof.force = P
 
 # solve
-solver = stx.NonlinearSolver(frame)
-solver.solve_incrementally(100, n4.y_dof, n4.x_dof)
-print(n8.x_dof.displacement)
+# solver = stx.NonlinearSolver(frame)
+# solver.solve_incrementally(100, n4.y_dof, n4.x_dof)
+# print(n8.x_dof.displacement)
 
 # plot results
-stx.plot_structure(frame, 1)
-
-stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")
+# stx.plot_structure(frame, 1)
+#
+# stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")
+#
+solver = stx.EigenSolver(frame)
+eigenvalue, eigenvector = solver.solve(4)
+print(eigenvalue)
+stx.plot_structure(frame, 1000)
+    

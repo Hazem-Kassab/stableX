@@ -42,9 +42,9 @@ class FrameElement(UniDimensionalElement):
                          [0, -12*e*i/l**3, -6*e*i/l**2,      0,  12*e*i/l**3, -6*e*i/l**2],
                          [0,   6*e*i/l**2,     2*e*i/l,      0,  -6*e*i/l**2,     4*e*i/l]])
 
-    def geometric_stiffness_matrix(self):
+    def geometric_stiffness_matrix(self, end_forces: np.ndarray):
         l = self.length
-        p = self.cumulative_end_forces[3]
+        p = end_forces[3]
         # print(self.euler_load)
         return p/l * np.array([[1,    0,         0, -1,     0,         0],
                                [0,  6/5,      l/10,  0,  -6/5,      l/10],

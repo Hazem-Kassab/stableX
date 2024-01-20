@@ -36,5 +36,3 @@ class VisualUniDimensionalElement(VisualElement):
         global_array = self.transformation_matrix().dot(scale * self._get_local_displacement()) + \
                        self._get_global_coordinates()
         ax.plot(global_array[0], global_array[1], 'white', linestyle='--')
-
-

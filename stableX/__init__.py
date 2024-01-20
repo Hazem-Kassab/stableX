@@ -7,3 +7,4 @@ from stableX.structure import Structure
 from stableX.visualization.visualizer import plot_structure, plot
 from stableX.solver.solver import Solver
 from stableX.solver.nonlinear_solver import NonlinearSolver
+from stableX.solver.eigen_solver import EigenSolver

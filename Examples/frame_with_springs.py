@@ -41,3 +41,4 @@ solver.solve_first_order_elastic()
 print(node_2.x_dof.displacement)
 
 stx.plot_structure(structure, 1)
+

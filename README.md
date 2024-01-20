@@ -57,7 +57,9 @@ stx.plot(solver.displacement, solver.load, "displacement (mm)", "load P (N)")
 ## Output    
 **Deformed (Buckled) Shape**![alt_text](https://github.com/Hazem-Kassab/stableX/blob/master/Examples/Images/Pinned_Pinned_Column.PNG?raw=true)
 
-**Load-Displacement Plot**![alt_text](https://github.com/Hazem-Kassab/stableX/blob/master/Examples/Images/Pinned_Pinned_Column_Plot.PNG?raw=true)  
+**Load-Displacement Plot**
+
+![alt_text](https://github.com/Hazem-Kassab/stableX/blob/master/Examples/Images/Pinned_Pinned_Column_Plot.PNG?raw=true)  
 
 **Verification with Euler Critical Load**    
 $$E=200\times10^3\space MPa$$ $$I=\frac{100^4}{12}= 8.33\times10^6\space mm^4$$  $$l=3000\space mm$$  $$P_E=\frac{\pi^2 E I}{l^2}=\frac{\pi^2 (200\times10^3) (8.33\times10^6)}{3000^2}=1.827\times10^6\space N$$  

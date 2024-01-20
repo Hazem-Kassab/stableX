@@ -10,8 +10,10 @@ class Solver:
         self.force_vector = np.array([dof.force for dof in self.structure.free_degrees_of_freedom])
         self.displacement_vector = np.array([dof.displacement for dof in self.structure.free_degrees_of_freedom])
         self.reactions_vector = np.array([dof.force for dof in self.structure.restrained_degrees_of_freedom])
+        self.set_element_stiffness_matrix()
 
-    def _assemble_stiffness_matrix(self):
+    @property
+    def _global_stiffness_matrix(self):
         global_matrix = np.zeros((self.degrees_of_freedom_count, self.degrees_of_freedom_count))
         for element in self.structure.elements:
             i = 0
@@ -46,9 +48,8 @@ class Solver:
         return np.array([dof.displacement for dof in self.structure.restrained_degrees_of_freedom])
 
     def solve_first_order_elastic(self):
-        global_matrix = self._assemble_stiffness_matrix()
+        global_matrix = self._global_stiffness_matrix
         kff = self._free_free_matrix(global_matrix)
-        # print(kff[0, 0])
         kfs = self._free_restrained_matrix(global_matrix)
         kss = self._restrained_restrained_matrix(global_matrix)
         ff = self.force_vector
@@ -92,6 +93,6 @@ class Solver:
             i += 1
         self._reactions_vector = value
 
-
-
-
+    def set_element_stiffness_matrix(self):
+        for element in self.structure.elements:
+            element.stiffness_matrix = element.first_order_elastic_stiffness_matrix()
