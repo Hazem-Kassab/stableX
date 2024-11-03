@@ -77,7 +77,7 @@ stx.plot_structure(structure, 1000)
 ```
 ![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/pinned_column_2nd_mode.png)
 ```bash
-print(f"Critical Buckling Load: {eigenvalue:.3f} N")
+print(f"Critical Buckling Load: {eigenvalue/1000:.3f} N")
 ```
 <pre> Output: Critical Buckling Load: 7365.812 kN </pre>
 
