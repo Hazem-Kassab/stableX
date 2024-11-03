@@ -36,4 +36,6 @@ solver = stx.EigenSolver(structure)
 
 eigenvalue, eigenvector = solver.solve(mode_shape=1)
 
+print(f"Critical Buckling Load: {eigenvalue:.3f} N")
+
 stx.plot_structure(structure, 1000)
