@@ -88,7 +88,7 @@ $$ P_{cr} = n^2 \frac{\pi^2 EI}{l^2} = 2^2 \frac{\pi^2 \times 200 \times 10^3 \t
 With an error = 0.75%
 
 ## Other Examples:
-# Rigid Bars with Intermediate Spring
+### Rigid Bars with Intermediate Spring
 ![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/rigid_bars_with_springs_sketch.png)
 ![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/rigid_bars_with_springs.png)
 <pre> Output: Critical Buckling Load: 666.667 N </pre>
@@ -96,16 +96,16 @@ $$ P_{cr} = 2 \frac{k}{l} = 2 \frac{1 \times 10^6}{3000} = 666.667 N $$
 
 With an error = 0.75%
 
-# Trapezoidal Frame
+### Trapezoidal Frame
 ![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/trapezoidal_frame.png)
 
-# Triangulated Frame
+### Triangulated Frame
 ![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/triangulated_frame.png)
 
-# Trussed Column
+### Trussed Column
 ![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/trussed_column.png)
 
-# Arch
+### Arch
 
 1st mode
 
@@ -115,7 +115,7 @@ With an error = 0.75%
 
 ![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/arch_2nd_mode.png)
 
-# Mult-storey Frame
+### Mult-storey Frame
 
 1st mode
 
@@ -129,13 +129,13 @@ With an error = 0.75%
 
 ![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/multi_storey_braced_frame_2nd_mode.png)
 
-# Portal Frame
+### Portal Frame
 ![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/portal_frame.png)
 
-# Overhang
+### Overhang
 ![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/overhang.png)
 
-# Truss Cantilever
+### Truss Cantilever
 ![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/truss_cantilever.png)
 
 ## Contributing
