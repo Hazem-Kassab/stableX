@@ -2,7 +2,7 @@ from abc import ABC
 
 import numpy as np
 
-from src.stablex.elements.element import Element
+from stablex.elements.element import Element
 
 
 class SpringElement(Element, ABC):

@@ -1,4 +1,4 @@
-# stablex
+# ***stableX***
 
 A Python library for stability analysis of structures
 

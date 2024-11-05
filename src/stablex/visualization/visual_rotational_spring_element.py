@@ -1,8 +1,8 @@
-from src.stablex.visualization.visual_element import VisualElement
+from stablex.visualization.visual_element import VisualElement
 import matplotlib.pyplot as plt
 from PIL import Image
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
-from src.stablex.visualization import ax
+from stablex.visualization import ax
 import pathlib
 
 

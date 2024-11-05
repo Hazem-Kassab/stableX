@@ -1,6 +1,6 @@
 import numpy as np
 
-from src.stablex.structure import Structure
+from stablex.structure import Structure
 
 
 class Solver:

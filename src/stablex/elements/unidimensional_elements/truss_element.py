@@ -1,7 +1,7 @@
 import numpy as np
 
-from src.stablex.elements.unidimensional_elements.unidimensional_element import UniDimensionalElement
-from src.stablex.degree_of_freedom import DegreeOfFreedom
+from stablex.elements.unidimensional_elements.unidimensional_element import UniDimensionalElement
+from stablex.degree_of_freedom import DegreeOfFreedom
 
 
 class TrussElement(UniDimensionalElement):

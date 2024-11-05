@@ -1,15 +1,20 @@
 [tool.poetry]
-name = "stablex"
-version = "0.1.1"
+name = "stableX"
+version = "0.1.24"
 description = "A Python library for stability analysis of structures"
 authors = ["Hazem Kassab"]
 license = "MIT"
 readme = "README.md"
+homepage = "https://github.com/Hazem-Kassab/stableX"
+
+[project.urls]
+"Source" = "https://github.com/Hazem-Kassab/stableX"
+"Releases" = "https://github.com/Hazem-Kassab/stableX/releases"
 
 [tool.poetry.dependencies]
-python = "^3.10"
-matplotlib = "^3.9.2"
-numpy = "1.25.2"
+python = "^3.9"
+matplotlib = "^3.9.0"
+numpy = "^1.25.0"
 
 
 [tool.poetry.dev-dependencies]

@@ -1,7 +1,7 @@
 import numpy as np
 
-from src.stablex.solver.first_order_solver import Solver
-from src.stablex.structure import Structure
+from stablex.solver.first_order_solver import Solver
+from stablex.structure import Structure
 
 
 class EigenSolver:

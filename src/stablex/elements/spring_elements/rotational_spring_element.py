@@ -1,8 +1,8 @@
 import numpy as np
 
-from src.stablex import Node
-from src.stablex.elements.spring_elements.spring_element import SpringElement
-from src.stablex.degree_of_freedom import DegreeOfFreedom
+from stablex import Node
+from stablex.elements.spring_elements.spring_element import SpringElement
+from stablex.degree_of_freedom import DegreeOfFreedom
 
 
 class LinearRotationalSpringElement(SpringElement):

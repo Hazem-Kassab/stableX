@@ -1,8 +1,8 @@
 import math
 import numpy as np
-from src.stablex.elements.unidimensional_elements.unidimensional_element import UniDimensionalElement
-from src.stablex.stability_functions import *
-from src.stablex.degree_of_freedom import DegreeOfFreedom
+from stablex.elements.unidimensional_elements.unidimensional_element import UniDimensionalElement
+from stablex.stability_functions import *
+from stablex.degree_of_freedom import DegreeOfFreedom
 
 
 class FrameElement(UniDimensionalElement):

@@ -1,5 +1,5 @@
-from src.stablex import Structure
-from src.stablex.visualization import visual_element_factory, plt
+from stablex import Structure
+from stablex.visualization import visual_element_factory, plt
 
 
 def plot_structure(structure: Structure, scale):

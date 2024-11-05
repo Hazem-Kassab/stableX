@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
-from src.stablex.elements.element import Element
-from src.stablex.node import Node
-from src.stablex.section import Section
-from src.stablex.degree_of_freedom import DegreeOfFreedom
+from stablex.elements.element import Element
+from stablex.node import Node
+from stablex.section import Section
+from stablex.degree_of_freedom import DegreeOfFreedom
 
 
 class UniDimensionalElement(Element, ABC):

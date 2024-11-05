@@ -2,7 +2,7 @@ from abc import abstractmethod, ABC
 
 import numpy as np
 
-from src.stablex import Node
+from stablex import Node
 
 
 class Element(ABC):
