@@ -94,8 +94,6 @@ With an error = 0.75%
 <pre> Output: Critical Buckling Load: 666.667 N </pre>
 $$ P_{cr} = 2 \frac{k}{l} = 2 \frac{1 \times 10^6}{3000} = 666.667 N $$
 
-With an error = 0.75%
-
 ### Trapezoidal Frame
 ![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/trapezoidal_frame.png?raw=true)
 

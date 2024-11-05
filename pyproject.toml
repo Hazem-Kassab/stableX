@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "stableX"
-version = "0.1.24"
+version = "0.1.3"
 description = "A Python library for stability analysis of structures"
 authors = ["Hazem Kassab"]
 license = "MIT"
