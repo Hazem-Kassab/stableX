@@ -53,13 +53,6 @@ class Rectangle(Section):
         height : float
             The height of the rectangle.
 
-        Properties
-        ----------
-        area : float
-            Calculates and returns the area of the rectangle.
-        inertia : float
-            Calculates and returns the moment of inertia of the rectangle  about its major centroidal axis.
-
         """
     def __init__(self, width: float, height: float):
         """
@@ -104,20 +97,18 @@ class UserDefinedSection(Section):
 
     @property
     def inertia(self) -> float:
-        """Gets the cross-sectional area of the section."""
+        """Gets and sets the cross-sectional area of the section."""
         return self._inertia
 
     @inertia.setter
     def inertia(self, value: float):
-        """Sets the cross-sectional area of the section."""
         self._inertia = value
 
     @property
     def area(self) -> float:
-        """Gets the moment of inertia of the section."""
+        """Gets and sets the moment of inertia of the section."""
         return self._area
 
     @area.setter
     def area(self, value: float):
-        """Sets the moment of inertia of the section."""
         self._area = value

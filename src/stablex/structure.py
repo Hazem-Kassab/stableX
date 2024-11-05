@@ -7,21 +7,13 @@ class Structure:
 
     Parameters
     ----------
-    elements : list of Element
-        List of elements that make up the structure.
+    elements: list of Element
+        Elements that define the structure.
 
     Attributes
     ----------
     elements : list of Element
         Elements that define the structure.
-    nodes : set of Node, property
-        Unique set of nodes across all elements in the structure.
-    degrees_of_freedom : list of DegreeOfFreedom, property
-        All degrees of freedom in the structure, sorted by restraint status and ID.
-    free_degrees_of_freedom : list of DegreeOfFreedom, property
-        Unrestrained degrees of freedom, sorted by ID.
-    restrained_degrees_of_freedom : list of DegreeOfFreedom, property
-        Restrained degrees of freedom, sorted by ID.
     """
     def __init__(self, elements: list[Element]):
         self.elements = elements

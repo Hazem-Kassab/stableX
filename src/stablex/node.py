@@ -1,4 +1,4 @@
-from src.stablex.degree_of_freedom import DegreeOfFreedom
+from stablex.degree_of_freedom import DegreeOfFreedom
 
 
 class Node:
@@ -28,11 +28,6 @@ class Node:
          Translational degree of freedom in the y-direction.
      rz_dof : DegreeOfFreedom
          Rotational degree of freedom about the z-axis.
-
-     Properties
-     ----------
-     coordinates : tuple
-         Gets or sets the coordinates of the node as a tuple (x, y).
 
      Methods
      -------
@@ -71,18 +66,11 @@ class Node:
 
     @property
     def coordinates(self) -> tuple:
-        """Gets the coordinates of the node as a tuple (x, y)."""
+        """Gets and sets the coordinates of the node as a tuple (x, y)."""
         return self.x, self.y
 
     @coordinates.setter
     def coordinates(self, coords: tuple):
-        """Sets the coordinates of the node.
-
-        Parameters
-        ----------
-        coords : tuple
-            A tuple containing the new (x, y) coordinates.
-        """
         self.x, self.y = coords
 
     def __str__(self):

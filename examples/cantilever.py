@@ -28,5 +28,5 @@ n2.y_dof.force = -p
 structure = stx.Structure([s1, e1])
 
 solver = stx.EigenSolver(structure)
-eigenvalue, eigenvector = solver.solve(mode_shape=2)
+eigenvalue, eigenvector = solver.solve(mode_shape=1)
 stx.plot_structure(structure, scale=1000)

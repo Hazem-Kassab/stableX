@@ -61,11 +61,11 @@ stx.plot_structure(structure, 1000)
 ```bash
 print(f"Critical Buckling Load: {eigenvalue/1000:.3f} N")
 ```
-<pre> Output: Critical Buckling Load: 182.864 kN </pre>
+<pre> Output: Critical Buckling Load: 1828.640 kN </pre>
 
 #### Verification with Euler's formula
 
-$$ P_{cr} = \frac{\pi^2 EI}{l^2} = \frac{\pi^2 \times 200 \times 10^3 \times (100)^4/12}{3000^2 \times 1000} = 182.770 kN $$
+$$ P_{cr} = \frac{\pi^2 EI}{l^2} = \frac{\pi^2 \times 200 \times 10^3 \times (100)^4/12}{3000^2 \times 1000} = 1827.705 kN $$
 
 With an error = 0.05%
 
@@ -75,7 +75,7 @@ eigenvalue, eigenvector = solver.solve(mode_shape=2)
 
 stx.plot_structure(structure, 1000)
 ```
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/pinned_column_2nd_mode.png)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/pinned_column_2nd_mode.png?raw=true)
 ```bash
 print(f"Critical Buckling Load: {eigenvalue/1000:.3f} N")
 ```
@@ -89,54 +89,54 @@ With an error = 0.75%
 
 ## Other Examples:
 ### Rigid Bars with Intermediate Spring
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/rigid_bars_with_springs_sketch.png)
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/rigid_bars_with_springs.png)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/rigid_bars_with_springs_sketch.png?raw=true)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/rigid_bars_with_springs.png?raw=true)
 <pre> Output: Critical Buckling Load: 666.667 N </pre>
 $$ P_{cr} = 2 \frac{k}{l} = 2 \frac{1 \times 10^6}{3000} = 666.667 N $$
 
 With an error = 0.75%
 
 ### Trapezoidal Frame
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/trapezoidal_frame.png)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/trapezoidal_frame.png?raw=true)
 
 ### Triangulated Frame
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/triangulated_frame.png)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/triangulated_frame.png?raw=true)
 
 ### Trussed Column
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/trussed_column.png)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/trussed_column.png?raw=true)
 
 ### Arch
 
 1st mode
 
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/arch_1st_mode.png)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/arch_1st_mode.png?raw=true)
 
 2nd mode
 
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/arch_2nd_mode.png)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/arch_2nd_mode.png?raw=true)
 
 ### Mult-storey Frame
 
 1st mode
 
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/mulit_storey_frame_1st_mode.png)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/mulit_storey_frame_1st_mode.png?raw=true)
 
 4th mode
 
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/mulit_storey_frame_4th_mode.png)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/mulit_storey_frame_4th_mode.png?raw=true)
 
 2nd mode (Braced)
 
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/multi_storey_braced_frame_2nd_mode.png)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/multi_storey_braced_frame_2nd_mode.png?raw=true)
 
 ### Portal Frame
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/portal_frame.png)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/portal_frame.png?raw=true)
 
 ### Overhang
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/overhang.png)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/overhang.png?raw=true)
 
 ### Truss Cantilever
-![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/truss_cantilever.png)
+![Alt text](https://github.com/Hazem-Kassab/stableX/blob/master/examples/Images/truss_cantilever.png?raw=true)
 
 ## Contributing
 

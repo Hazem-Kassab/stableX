@@ -1,5 +1,5 @@
 from src.stablex import Structure
-from src.stablex._visualization import _visual_element_factory, plt
+from src.stablex.visualization import visual_element_factory, plt
 
 
 def plot_structure(structure: Structure, scale):
@@ -16,7 +16,7 @@ def plot_structure(structure: Structure, scale):
     #           y_min - 1.1 * y_range/2,
     #           y_max + 1.1 * y_range/2))
     for element in structure.elements:
-        vse = _visual_element_factory.create_visual_element(element)
+        vse = visual_element_factory.create_visual_element(element)
         vse.plot_element()
         vse.plot_global_displacement(scale)
     plt.show()

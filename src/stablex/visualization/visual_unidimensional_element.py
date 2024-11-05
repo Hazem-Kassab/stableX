@@ -1,7 +1,7 @@
 import numpy as np
 
-from src.stablex._visualization import ax
-from src.stablex._visualization._visual_element import VisualElement
+from src.stablex.visualization import ax
+from src.stablex.visualization.visual_element import VisualElement
 
 
 class VisualUniDimensionalElement(VisualElement):
