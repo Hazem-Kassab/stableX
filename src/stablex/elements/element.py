@@ -20,23 +20,10 @@ class Element(ABC):
 
     Attributes
     ----------
-    start_node : Node
-        The starting node of the element, modifiable after initialization.
-    end_node : Node
-        The ending node of the element, modifiable after initialization.
-    geometric_nonlinearity : bool
-        Whether geometric nonlinearity is included in the element.
     id : int
         Unique identifier for the element instance, auto-incremented.
-    stiffness_matrix : np.ndarray
-        The stiffness matrix for the element.
-
-    Properties
-    ----------
-    nodes : set of Node
-        Returns a set containing the start and end nodes of the element.
-    stiffness_matrix_dofs : list
-        List of degrees of freedom for the stiffness matrix, must be implemented by subclasses.
+    geometric_nonlinearity : bool
+        Whether geometric nonlinearity is included in the element.
 
     Methods
     -------
@@ -111,7 +98,6 @@ class Element(ABC):
 
     @start_node.setter
     def start_node(self, value: Node):
-        """Sets the starting node of the element."""
         self._start_node = value
 
     @property
@@ -121,7 +107,6 @@ class Element(ABC):
 
     @end_node.setter
     def end_node(self, value: Node):
-        """Sets the ending node of the element."""
         self._end_node = value
 
     @abstractmethod

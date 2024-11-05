@@ -15,12 +15,21 @@ author = u"Hazem Kassab"
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+
+mathjax_path = 'docs/MathJax-3.2.2'
+
 extensions = [
     "myst_nb",
     "autoapi.extension",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
+    'sphinx.ext.mathjax',
 ]
+
+autodoc_default_options = {
+    'private-members': False,  # Ignore private members
+}
+
 autoapi_dirs = ["../src"]
 
 # List of patterns, relative to source directory, that match files and

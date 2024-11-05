@@ -9,18 +9,6 @@ class DegreeOfFreedom:
     ----------
     id : int
         A unique identifier for the degree of freedom.
-    displacement : float
-        The displacement value associated with the degree of freedom.
-        This value is determined after analysis and defaults to 0.0.
-
-    Properties
-    ----------
-    restrained : Boolean
-        A flag indicating whether the degree of freedom is restrained (boundary condition applied).
-        The default value is False
-    force : float
-        Used to assign a nodal force to a node in the direction of the degree of freedom.
-
     """
 
     id_counter = 1
@@ -36,32 +24,39 @@ class DegreeOfFreedom:
         """
         self.id = DegreeOfFreedom.id_counter
         self._restrained = False
-        self.displacement = 0
+        self._displacement = 0
         DegreeOfFreedom.id_counter += 1
         self._force = 0
 
     @property
+    def displacement(self) -> float:
+        """
+        Gets and sets the displacement of the node in the direction of the degree of freedom.
+        Initialized with value 0.0.
+        """
+        return self._displacement
+
+    @displacement.setter
+    def displacement(self, value: float):
+        self._displacement = value
+
+    @property
     def restrained(self) -> bool:
-        """Gets the boundary condition of the degree of freedom."""
+        """
+        Gets and sets the boundary condition of the node in the direction of the degree of freedom.
+        False by default.
+        """
         return self._restrained
 
     @restrained.setter
     def restrained(self, value: bool):
-        """Sets the boundary condition of the degree of freedom.
-
-        Parameters
-        ----------
-        value : bool
-            Indicates whether the degree of freedom should be restrained.
-        """
         self._restrained = value
 
     @property
     def force(self) -> float:
-        """Gets the force applied at the node in the direction of the degree of freedom."""
+        """Gets and sets the force applied at the node in the direction of the degree of freedom."""
         return self._force
 
     @force.setter
     def force(self, value: float):
-        """Applies a force at the node in the direction of the degree of freedom."""
         self._force = value
